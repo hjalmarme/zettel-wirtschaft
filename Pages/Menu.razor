@@ -1,0 +1,33 @@
+@page "/menu"
+
+<PageTitle>Menu</PageTitle>
+
+<RadzenRow>
+    <RadzenColumn Size="12">
+        <RadzenText Text="Menu" TextStyle="TextStyle.H3" TagName="TagName.H1" />
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenRow>
+    <RadzenColumn Size="12">
+        <RadzenButton Text="Add Menu Item" Click=@OpenAddMenuItem></RadzenButton>
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenDataGrid 
+    class="mt-2"
+    @ref="@dataGrid"
+    TItem="ZettelWirtschaft.Client.Models.MenuItem"     
+    Data="@menuItems" 
+    AllowSorting="true" 
+    AllowFiltering="true" 
+    LoadData="@MenuItemsLoadData" 
+    Count="@menuItemsCount">
+    <Columns>
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Id" Title="Id" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Type" Title="Type" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Name" Title="Name" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Description" Title="Description" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Price" Title="Price" />
+    </Columns>
+</RadzenDataGrid>

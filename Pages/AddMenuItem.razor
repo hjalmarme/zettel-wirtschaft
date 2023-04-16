@@ -1,0 +1,51 @@
+@page "/add-menu-item"
+@using ZettelWirtschaft.Client.Models;
+
+
+<PageTitle>AddMenuItem</PageTitle>
+
+<RadzenTemplateForm TItem="MenuItem" Data=@Item Submit=@OnSubmit InvalidSubmit=@OnInvalidSubmit>
+
+    <RadzenStack Gap="1rem" Class="rz-p-sm-12">
+
+        <RadzenFormField Text="Type">
+            <ChildContent>
+                <RadzenTextBox Name="Type" @bind-Value=@Item.Type />
+            </ChildContent>
+            <Helper>
+                <RadzenRequiredValidator Component="Type" Text="Type is required." />
+            </Helper>
+        </RadzenFormField>
+
+        <RadzenFormField Text="Name">
+            <ChildContent>
+                <RadzenTextBox Name="Name" @bind-Value=@Item.Name />
+            </ChildContent>
+            <Helper>
+                <RadzenRequiredValidator Component="Name" Text="Name is required." />
+            </Helper>
+        </RadzenFormField>
+
+        <RadzenFormField Text="Description">
+            <ChildContent>
+                <RadzenTextBox Name="Description" @bind-Value=@Item.Description />
+            </ChildContent>
+            <Helper>
+                <RadzenRequiredValidator Component="Description" Text="Description is required." />
+            </Helper>
+        </RadzenFormField>
+
+        <RadzenFormField Text="Price">
+            <ChildContent>
+                <RadzenTextBox Name="Price" @bind-Value=@Item.Price />
+            </ChildContent>
+            <Helper>
+                <RadzenRequiredValidator Component="Price" Text="Price is required." />
+            </Helper>
+        </RadzenFormField>
+
+        <RadzenButton ButtonType="ButtonType.Submit" Text="Submit"></RadzenButton>
+
+    </RadzenStack>
+
+</RadzenTemplateForm>
