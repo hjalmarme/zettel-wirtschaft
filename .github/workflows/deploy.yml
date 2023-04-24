@@ -25,4 +25,4 @@ jobs:
         with:
           token: ${{ secrets.TOKEN }}
           branch: gh-pages
-          folder: publish
+          folder: publish/wwwroot
