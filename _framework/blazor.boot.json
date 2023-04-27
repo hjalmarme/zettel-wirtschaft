@@ -2,7 +2,7 @@
   "cacheBootResources": true,
   "config": [ ],
   "debugBuild": false,
-  "entryAssembly": "ZettelWirtschaft.Client",
+  "entryAssembly": "ZettelWirtschaft",
   "icuDataMode": 0,
   "linkerEnabled": true,
   "resources": {
@@ -10,12 +10,12 @@
       "Microsoft.AspNetCore.Components.dll": "sha256-c3RmNq8+XYbqIQCsqlIrIvlALbf4\/iIX+bqMPjzpQSM=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-ybXELggsIV80ZlDNCnl3uCQXvx03xzuBUs1zF\/XEpdI=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-8yh68C6c+Aalls1vb\/MC+eNd6tq1tAr2jSGkBbcRvq4=",
-      "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-PHd5er9594HkZgXBD5bL0\/0dj\/RxTFTQQWFQemJOTjE=",
+      "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-VfuhQtMrvCmEflZYOOSPlstWKSnWBKH\/9leuaVp3ChE=",
       "Microsoft.CSharp.dll": "sha256-gqUAUZXqZO66zbQtKpo0mFZKjYVGpFqP1M2IZcC2vpI=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-X\/f4fDl2cuIRXeWHhK\/f2UqQbFioD+RU4a4CEh0zrrQ=",
       "Microsoft.Extensions.Configuration.dll": "sha256-DBOKSPriP2JDxVbbWrLXyD3K4\/x3RBifNBWk\/q1I39M=",
       "Microsoft.Extensions.Configuration.Json.dll": "sha256-nTqLKuydttqLtE3VT3p6XhPmLxuaJDd0cL3Qzt8D4Ro=",
-      "Microsoft.Extensions.DependencyInjection.Abstractions.dll": "sha256-bsGd68yNIWo8ifNoI7zAQlbDtQaGcirY8prT6Zx1IRE=",
+      "Microsoft.Extensions.DependencyInjection.Abstractions.dll": "sha256-SNz4NCr6cjUZH1xDpwHVRW5ZM+kzG1Fzd3dZiCLFzKs=",
       "Microsoft.Extensions.DependencyInjection.dll": "sha256-qi0kE7rp0kdsNqdL6DyPZEeimjUGvcLT4iWQX0YnRus=",
       "Microsoft.Extensions.Logging.Abstractions.dll": "sha256-RFPPv5n2AGA9qYNm6B1hNg0rPnDwjuMdM3Wyy4EeYeA=",
       "Microsoft.Extensions.Logging.dll": "sha256-oEPPw1EPpaOHv+EHwoT2WcgDiRbjEXxigiW7V44cIYE=",
@@ -64,7 +64,7 @@
       "System.Web.HttpUtility.dll": "sha256-V3ynXN4\/kLYTtu3cq9i2by3xaKV4tqxct5+3Wy1tO0c=",
       "System.Xml.Linq.dll": "sha256-A4CODzYb1u9XpUZmVzurgU7y8PBOj9tm7Ru5VFqAE8g=",
       "System.Xml.XDocument.dll": "sha256-QmRjScWn3TFZsTuifkzL4TrNUfJqJM68vPkFNsEAwjI=",
-      "ZettelWirtschaft.Client.dll": "sha256-pe81PU0VtwU\/oQIsxS2ew5OA59oWlqPp4QO6y6xPbJM="
+      "ZettelWirtschaft.dll": "sha256-DKHdCVpzbI3rCldWFd9bj1FrSifUDwVt36qpbqkkV8E="
     },
     "extensions": null,
     "lazyAssembly": null,
