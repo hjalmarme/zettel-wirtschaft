@@ -1,4 +1,4 @@
-﻿namespace ZettelWirtschaft.Client.Models;
+﻿namespace ZettelWirtschaft.Models;
 
 public class MenuItem
 {

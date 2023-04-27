@@ -1,6 +1,6 @@
-﻿using ZettelWirtschaft.Client.Models;
+﻿using ZettelWirtschaft.Models;
 
-namespace ZettelWirtschaft.Client.Services;
+namespace ZettelWirtschaft.Services;
 
 public class DataServiceAppStorage : IDataService
 {
@@ -10,35 +10,41 @@ public class DataServiceAppStorage : IDataService
     {
     }
 
-    public void AddMenuItem(MenuItem menuItem)
+    public Task AddMenuItem(MenuItem menuItem)
     {
         _items.Add(menuItem);
+
+        return Task.CompletedTask;
     }
 
-    public MenuItem GetMenuItem(string id)
+    public Task<MenuItem> GetMenuItem(string id)
     {
-        return _items.FirstOrDefault(item => item.Id == id);
+        return Task.FromResult<MenuItem>(_items.FirstOrDefault(item => item.Id == id));
     }
 
-    public IEnumerable<MenuItem> GetMenuItems()
+    public Task<IEnumerable<MenuItem>> GetMenuItems()
     {
-        return _items.AsEnumerable();
+        return Task.FromResult<IEnumerable<MenuItem>>(_items.AsEnumerable());
     }
 
-    public void RemoveMenuItem(MenuItem menuItem)
+    public Task RemoveMenuItem(MenuItem menuItem)
     {
         _items.Remove(menuItem);
+
+        return Task.CompletedTask;
     }
 
-    public void UpdateMenuItem(MenuItem menuItem)
+    public Task UpdateMenuItem(MenuItem menuItem)
     {
         var item = _items.FirstOrDefault(item => item.Id == menuItem.Id);
 
-        if (item is null) return;
+        if (item is null) return Task.CompletedTask;;
 
         item.Type = menuItem.Type;
         item.Name = menuItem.Name;
         item.Description = menuItem.Description;
         item.Price = menuItem.Price;
+
+        return Task.CompletedTask;
     }
 }

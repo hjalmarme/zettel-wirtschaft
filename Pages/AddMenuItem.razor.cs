@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Radzen;
 using System.Text.Json;
-using ZettelWirtschaft.Client.Models;
-using ZettelWirtschaft.Client.Services;
+using ZettelWirtschaft.Models;
+using ZettelWirtschaft.Services;
 
-namespace ZettelWirtschaft.Client.Pages;
+namespace ZettelWirtschaft.Pages;
 
 public partial class AddMenuItem
 {

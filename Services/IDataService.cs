@@ -1,16 +1,16 @@
-﻿using ZettelWirtschaft.Client.Models;
+﻿using ZettelWirtschaft.Models;
 
-namespace ZettelWirtschaft.Client.Services;
+namespace ZettelWirtschaft.Services;
 
 public interface IDataService
 {
-    public void AddMenuItem(MenuItem menuItem);
+    public Task AddMenuItem(MenuItem menuItem);
 
-    public MenuItem GetMenuItem(string id);
+    public Task<MenuItem> GetMenuItem(string id);
 
-    public IEnumerable<MenuItem> GetMenuItems();
+    public Task<IEnumerable<MenuItem>> GetMenuItems();
 
-    public void UpdateMenuItem(MenuItem menuItem);
+    public Task UpdateMenuItem(MenuItem menuItem);
 
-    public void RemoveMenuItem(MenuItem menuItem);
+    public Task RemoveMenuItem(MenuItem menuItem);
 }

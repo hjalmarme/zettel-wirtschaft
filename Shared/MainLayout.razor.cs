@@ -10,7 +10,7 @@ using Microsoft.JSInterop;
 using Radzen;
 using Radzen.Blazor;
 
-namespace ZettelWirtschaft.Client.Shared
+namespace ZettelWirtschaft.Shared
 {
     public partial class MainLayout
     {

@@ -17,17 +17,17 @@
 <RadzenDataGrid 
     class="mt-2"
     @ref="@dataGrid"
-    TItem="ZettelWirtschaft.Client.Models.MenuItem"     
+    TItem="ZettelWirtschaft.Models.MenuItem"     
     Data="@menuItems" 
     AllowSorting="true" 
     AllowFiltering="true" 
     LoadData="@MenuItemsLoadData" 
     Count="@menuItemsCount">
     <Columns>
-        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Id" Title="Id" />
-        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Type" Title="Type" />
-        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Name" Title="Name" />
-        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Description" Title="Description" />
-        <RadzenDataGridColumn TItem="ZettelWirtschaft.Client.Models.MenuItem" Property="Price" Title="Price" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Models.MenuItem" Property="Id" Title="Id" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Models.MenuItem" Property="Type" Title="Type" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Models.MenuItem" Property="Name" Title="Name" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Models.MenuItem" Property="Description" Title="Description" />
+        <RadzenDataGridColumn TItem="ZettelWirtschaft.Models.MenuItem" Property="Price" Title="Price" />
     </Columns>
 </RadzenDataGrid>

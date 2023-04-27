@@ -10,7 +10,7 @@ using Microsoft.JSInterop;
 using Radzen;
 using Radzen.Blazor;
 
-namespace ZettelWirtschaft.Client.Pages
+namespace ZettelWirtschaft.Pages
 {
     public partial class Index
     {

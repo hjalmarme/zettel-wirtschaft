@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Radzen;
 using Radzen.Blazor;
-using ZettelWirtschaft.Client.Models;
-using ZettelWirtschaft.Client.Services;
+using ZettelWirtschaft.Models;
+using ZettelWirtschaft.Services;
 
-namespace ZettelWirtschaft.Client.Pages;
+namespace ZettelWirtschaft.Pages;
 
 public partial class Menu
 {
@@ -40,7 +40,7 @@ public partial class Menu
     {
         try
         {
-            var result = DataService.GetMenuItems();
+            var result = await DataService.GetMenuItems();
 
             menuItems = result;
             menuItemsCount = result.Count();
