@@ -12,5 +12,5 @@ public interface IDataService
 
     public Task UpdateMenuItem(MenuItem menuItem);
 
-    public Task RemoveMenuItem(MenuItem menuItem);
+    public Task RemoveMenuItem(string id);
 }

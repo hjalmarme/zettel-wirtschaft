@@ -27,9 +27,9 @@ public class DataServiceAppStorage : IDataService
         return Task.FromResult<IEnumerable<MenuItem>>(_items.AsEnumerable());
     }
 
-    public Task RemoveMenuItem(MenuItem menuItem)
+    public Task RemoveMenuItem(string id)
     {
-        _items.Remove(menuItem);
+        _items.RemoveAll(menuItem => menuItem.Id == id);
 
         return Task.CompletedTask;
     }
@@ -38,7 +38,7 @@ public class DataServiceAppStorage : IDataService
     {
         var item = _items.FirstOrDefault(item => item.Id == menuItem.Id);
 
-        if (item is null) return Task.CompletedTask;;
+        if (item is null) return Task.CompletedTask;
 
         item.Type = menuItem.Type;
         item.Name = menuItem.Name;
