@@ -134,7 +134,7 @@ window.idbWrapper = (function () {
 
                 const putRequest = transaction.objectStore(objectStoreName).put(item);
 
-                putRequest.onsuccess = () => item = getRequest.result;
+                putRequest.onsuccess = (event) => item = event.target.result;
             });
 
             return await promisePut;
