@@ -1,4 +1,4 @@
-window.idbWrapper = (function () {
+window.idbWrapper = (() => {
     // private
     const _dbName = 'ZettelWirtschaft';
     const _dbVersion = 1;
@@ -6,19 +6,19 @@ window.idbWrapper = (function () {
 
     // public
     return {
-        open: function () {
+        open: () => {
             const openRequest = window.indexedDB.open(_dbName, _dbVersion);
 
-            openRequest.onerror = function (event) {
+            openRequest.onerror = (event) => {
                 console.error('Database error: ' + event.target.errorCode);
             };
 
-            openRequest.onsuccess = function (event) {
+            openRequest.onsuccess = (event) => {
                 _db = event.target.result;
                 console.log('Database opened successfully');
             };
 
-            openRequest.onupgradeneeded = function (event) {
+            openRequest.onupgradeneeded = (event) => {
                 _db = event.target.result;
 
                 _db.onerror = (event) => {
@@ -37,7 +37,7 @@ window.idbWrapper = (function () {
             };
         },
 
-        add: async function (objectStoreName, item) {
+        add: async (objectStoreName, item) => {
             console.log('Adding item to database...');
 
             const promiseAdd = new Promise((resolve, reject) => {
@@ -59,7 +59,7 @@ window.idbWrapper = (function () {
             return await promiseAdd;
         },
 
-        get: async function (objectStoreName, id) {
+        get: async (objectStoreName, id) => {
             console.log('Retrieving item from database...');
 
             const promiseItem = new Promise((resolve, reject) => {
@@ -78,13 +78,13 @@ window.idbWrapper = (function () {
 
                 const getRequest = transaction.objectStore(objectStoreName).get(id);
 
-                getRequest.onsuccess = () => item = getRequest.result;
+                getRequest.onsuccess = (event) => item = event.target.result;
             });
 
             return await promiseItem;
         },
 
-        getAll: async function (objectStoreName) {
+        getAll: async (objectStoreName) => {
             console.log('Retrieving all items from database...');
 
             const promiseList = new Promise((resolve, reject) => {
@@ -116,8 +116,8 @@ window.idbWrapper = (function () {
             return await promiseList;
         },
 
-        put: async function (objectStoreName, item) {
-            console.log('Updateing item in database...');
+        put: async (objectStoreName, item) => {
+            console.log('Updating item in database...');
 
             const promisePut = new Promise((resolve, reject) => {
                 const transaction = _db.transaction(objectStoreName, 'readwrite');
@@ -140,7 +140,7 @@ window.idbWrapper = (function () {
             return await promisePut;
         },
 
-        delete: async function (objectStoreName, id) {
+        delete: async (objectStoreName, id) => {
             console.log('Deleting item from database...');
 
             const promiseDelete = new Promise((resolve, reject) => {
@@ -164,6 +164,4 @@ window.idbWrapper = (function () {
     };
 })();
 
-window.onload = function () {
-    window.idbWrapper.open();
-};
+window.onload = () => window.idbWrapper.open();
