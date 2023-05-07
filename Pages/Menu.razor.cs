@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Radzen;
 using Radzen.Blazor;
-using ZettelWirtschaft.Models;
 using ZettelWirtschaft.Services;
 
 namespace ZettelWirtschaft.Pages;
@@ -30,9 +29,10 @@ public partial class Menu
     [Inject]
     public IDataService DataService { get; set; }
 
-    protected RadzenDataGrid<MenuItem> dataGrid;
+    protected RadzenDataGrid<Models.MenuItem> dataGrid;
 
-    protected IEnumerable<MenuItem> menuItems;
+    protected IEnumerable<Models.MenuItem> menuItems;
+    protected IList<Models.MenuItem> selectedItems = new List<Models.MenuItem>();
 
     protected int menuItemsCount;
 
@@ -51,12 +51,40 @@ public partial class Menu
         }
     }
 
-    protected async Task OpenAddMenuItem()
+    protected async Task AddMenuItem()
     {
-        var added = await DialogService.OpenAsync<AddMenuItem>($"Add Menu Item");
+        var item = await DialogService.OpenAsync<MenuItem>("Add Menu Item");
 
-        if (added)
+        if (item is not null)
         {
+            await DataService.AddMenuItem(item);
+            await dataGrid.Reload();
+        }
+    }
+
+    protected async Task EditMenuItem()
+    {
+        var item = selectedItems.FirstOrDefault();
+        if (item is null) return;
+
+        item = await DialogService.OpenAsync<MenuItem>("Edit Menu Item", new() { { "Item", item } });
+
+        if (item is not null)
+        {
+            await DataService.UpdateMenuItem(item);
+            await dataGrid.Reload();
+        }
+    }
+
+    protected async Task RemoveMenuItem()
+    {
+        var item = selectedItems.FirstOrDefault();
+
+        bool remove = await DialogService.Confirm("Are you sure?", "Remove Menu Item", new() { OkButtonText = "Yes", CancelButtonText = "No" }) ?? false;
+
+        if (remove && item is not null)
+        {
+            await DataService.RemoveMenuItem(item.Id);
             await dataGrid.Reload();
         }
     }

@@ -10,17 +10,21 @@
 
 <RadzenRow>
     <RadzenColumn Size="12">
-        <RadzenButton Text="Add Menu Item" Click=@OpenAddMenuItem></RadzenButton>
+        <RadzenButton Text="Add Menu Item" Click=@AddMenuItem></RadzenButton>
+        <RadzenButton Text="Edit Menu Item" Click=@EditMenuItem></RadzenButton>
+        <RadzenButton Text="Remove Menu Item" Click=@RemoveMenuItem></RadzenButton>
     </RadzenColumn>
 </RadzenRow>
 
 <RadzenDataGrid 
     class="mt-2"
     @ref="@dataGrid"
+    @bind-Value=@selectedItems
     TItem="ZettelWirtschaft.Models.MenuItem"     
     Data="@menuItems" 
     AllowSorting="true" 
-    AllowFiltering="true" 
+    AllowFiltering="true"
+    SelectionMode="DataGridSelectionMode.Single"
     LoadData="@MenuItemsLoadData" 
     Count="@menuItemsCount">
     <Columns>
