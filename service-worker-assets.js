@@ -33,8 +33,12 @@
       "url": "images\/logo.png"
     },
     {
-      "hash": "sha256-tJgqQqKyN7i943T1pqE8t+lhHPjrdzSmXV2GheytWSk=",
+      "hash": "sha256-nrhENMikPhS3CybfFH4PSoqs48hwqA\/0izbMMLsNZFs=",
       "url": "index.html"
+    },
+    {
+      "hash": "sha256-DPC+Cge9tzCSHlBk41NkDdWmuaoZUEqviIr+htoT\/4Y=",
+      "url": "main.js"
     },
     {
       "hash": "sha256-uIYyLFYr0TplLDD+Vvq\/X5vPhBF7lUdoWSIATl98lPU=",
@@ -73,7 +77,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-VB846rzk\/H7HsOx5exbpPa5UK4WoQLz7b2u\/3o+W3g4=",
+      "hash": "sha256-FnuYIA9pfb9DQ\/9gv711TDWv0LVmWTEVVRojJ2O9+Uc=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -93,7 +97,7 @@
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
-      "hash": "sha256-gqUAUZXqZO66zbQtKpo0mFZKjYVGpFqP1M2IZcC2vpI=",
+      "hash": "sha256-3X1mQ1ZwKTuqK+7s8xJ4AI4jvCRV5bGy\/\/FtSSWUDos=",
       "url": "_framework\/Microsoft.CSharp.dll"
     },
     {
@@ -233,7 +237,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-3iS3YvIMNRoWL7lu\/RKbMt4aUqSWHrzt6lFK3z8hxY0=",
+      "hash": "sha256-oVnzL\/\/V826GmMapj9CZNr8zJZtT\/egmrsHdHyobBp4=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -265,7 +269,7 @@
       "url": "_framework\/System.Reflection.Primitives.dll"
     },
     {
-      "hash": "sha256-V89qMFQQfXxxbT2oB68PSDFvE73v\/rzcZ429NdRa8qo=",
+      "hash": "sha256-zp\/PbLk3oJHuNk4xBjjGeU2KbreN+hVV6e1HAfccwW4=",
       "url": "_framework\/System.Runtime.dll"
     },
     {
@@ -305,7 +309,7 @@
       "url": "_framework\/System.Xml.XDocument.dll"
     },
     {
-      "hash": "sha256-DKHdCVpzbI3rCldWFd9bj1FrSifUDwVt36qpbqkkV8E=",
+      "hash": "sha256-SEPal97XgcYwnfPG4PebX+svjT4Gkmj7t5esCC9s9GE=",
       "url": "_framework\/ZettelWirtschaft.dll"
     },
     {
@@ -445,5 +449,5 @@
       "url": "_content\/Radzen.Blazor\/Radzen.Blazor.js"
     }
   ],
-  "version": "hlMtu5uQ"
+  "version": "wn5rFzSq"
 };
