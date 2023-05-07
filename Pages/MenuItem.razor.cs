@@ -2,12 +2,11 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Radzen;
 using System.Text.Json;
-using ZettelWirtschaft.Models;
 using ZettelWirtschaft.Services;
 
 namespace ZettelWirtschaft.Pages;
 
-public partial class AddMenuItem
+public partial class MenuItem
 {
     [Inject]
     protected IJSRuntime JSRuntime { get; set; }
@@ -30,15 +29,14 @@ public partial class AddMenuItem
     [Inject]
     public IDataService DataService { get; set; }
 
-    protected MenuItem Item = new();
+    [Parameter]
+    public Models.MenuItem Item { get; set; } = new();
 
-    private void OnSubmit(MenuItem item)
+    private void OnSubmit(Models.MenuItem item)
     {
         Console.WriteLine($"Submit: {JsonSerializer.Serialize(item, new JsonSerializerOptions() { WriteIndented = true })}");
 
-        DataService.AddMenuItem(item);
-
-        DialogService.Close(true);
+        DialogService.Close(item);
     }
 
     private void OnInvalidSubmit(FormInvalidSubmitEventArgs args)

@@ -1,10 +1,6 @@
-@page "/add-menu-item"
-@using ZettelWirtschaft.Models;
+@page "/menu-item"
 
-
-<PageTitle>AddMenuItem</PageTitle>
-
-<RadzenTemplateForm TItem="MenuItem" Data=@Item Submit=@OnSubmit InvalidSubmit=@OnInvalidSubmit>
+<RadzenTemplateForm TItem="Models.MenuItem" Data=@Item Submit=@OnSubmit InvalidSubmit=@OnInvalidSubmit>
 
     <RadzenStack Gap="1rem" Class="rz-p-sm-12">
 
