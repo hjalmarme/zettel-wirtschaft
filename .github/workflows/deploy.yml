@@ -23,6 +23,31 @@ jobs:
       - name: Change base-tag in index.html from / to zettel-wirtschaft
         run: sed -i 's/<base href="\/" \/>/<base href="\/zettel-wirtschaft\/" \/>/g' publish/wwwroot/index.html
 
+      - name: Fix service-worker-assets.js hashes
+        working-directory: publish/wwwroot
+        run: |
+          jsFile=$(<service-worker-assets.js)
+          json=$(echo "$jsFile" | sed "s/self.assetsManifest = //g" | sed "s/;//g")
+          assets=$(echo "$json" | jq '.assets[]' -c)
+          for asset in $assets
+          do
+            oldHash=$(echo "$asset" | jq '.hash')
+            oldHash="${oldHash:1:-1}"
+            path=$(echo "$asset" | jq '.url')
+            path="${path:1:-1}"
+            newHash="sha256-$(openssl dgst -sha256 -binary $path | openssl base64 -A)"
+
+            if [ $oldHash != $newHash ]; then
+              oldHash=$(echo "$oldHash" | sed 's;/;\\/;g')
+              newHash=$(echo "$newHash" | sed 's;/;\\/;g')
+              echo "Updating hash for $path from $oldHash to $newHash"
+              oldHash=$(echo "$oldHash" | sed 's;/;\\/;g')
+              jsFile=$(echo -n "$jsFile" | sed "s;$oldHash;$newHash;g")
+            fi
+          done
+
+          echo -n "$jsFile" > service-worker-assets.js
+
       - name: Add .nojekyll file
         run: touch publish/wwwroot/.nojekyll
 
