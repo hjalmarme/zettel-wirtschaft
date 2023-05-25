@@ -24,7 +24,7 @@ jobs:
         run: sed -i 's/<base href="\/" \/>/<base href="\/zettel-wirtschaft\/" \/>/g' publish/wwwroot/index.html
 
       - name: Add .nojekyll file
-        run: touch release/wwwroot/.nojekyll
+        run: touch publish/wwwroot/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
