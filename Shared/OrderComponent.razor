@@ -1,0 +1,41 @@
+<RadzenCard Style="min-width: 200px; min-height: 300px;" class="rz-p-0" @onclick="OnClick">
+    <RadzenStack Gap="0">
+
+        <RadzenCard style="@(IsSelected ? "background-color: LightGray;" : "")">
+            <RadzenRow JustifyContent="JustifyContent.SpaceBetween">
+                <RadzenColumn Size="4">
+                    <RadzenText TextStyle="TextStyle.Overline">
+                        Order @(Order.Name == "" ? "#" + Order.Number.ToString("D4") : Order.Name)
+                    </RadzenText>
+                </RadzenColumn>
+                <RadzenColumn Size="6" Class="rz-text-align-right">
+                    <RadzenText TextStyle="TextStyle.Overline" TextAlign="TextAlign.End">@(Order.Date)</RadzenText>
+                    </RadzenColumn>
+                </RadzenRow>
+                <RadzenRow JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenColumn Size="4">
+                        <RadzenText TextStyle="TextStyle.Button">Total:</RadzenText>
+                    </RadzenColumn>
+                    <RadzenColumn Size="6" Class="rz-text-align-right">
+                        <RadzenText TextStyle="TextStyle.Button" TextAlign="TextAlign.End">@(CalculateTotal()) $
+                    </RadzenText>
+                </RadzenColumn>
+            </RadzenRow>
+        </RadzenCard>
+
+        @foreach (var item in Order.Items.OrderBy(x => x.Name))
+        {
+            <RadzenCard class="rz-py-2" @onclick="@(_ => OnClickItem?.Invoke(item))">
+                <RadzenRow JustifyContent="JustifyContent.SpaceBetween">
+                    <RadzenColumn>
+                        <RadzenText TextStyle="TextStyle.Body1">@(item.Name)</RadzenText>
+                        </RadzenColumn>
+                        <RadzenColumn>
+                            <RadzenText TextStyle="TextStyle.Body1" TextAlign="TextAlign.End">@(item.Price) $</RadzenText>
+                    </RadzenColumn>
+                </RadzenRow>
+            </RadzenCard>
+        }
+
+    </RadzenStack>
+</RadzenCard>
