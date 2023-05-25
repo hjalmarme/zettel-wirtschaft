@@ -1,0 +1,50 @@
+@page "/order/{OrderId?}"
+
+<RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.End"  class="rz-mb-0">
+    <RadzenButton Text="Save" Click=@OnSave></RadzenButton>
+    <RadzenButton Text="Exit" Click=@OnExit></RadzenButton>
+</RadzenStack>
+
+<RadzenStack Orientation="Orientation.Horizontal">
+
+    <OrderComponent Order="CurrentOrder" OnClickItem="RemoveItem"/>
+
+    <RadzenTabs TabPosition="TabPosition.Top" RenderMode="TabRenderMode.Client">
+        <Tabs>
+            @foreach (var type in Types)
+            {
+                <RadzenTabsItem Text=@(type)>
+                    <RadzenDataList PageSize="6" WrapItems="true" AllowPaging="true"
+                        Data="@(MenuItems.Where(x => x.Type == type).AsEnumerable())" TItem="Models.MenuItem">
+                        <Template Context="menuItem">
+                            <RadzenCard Style="width: 250px;" class="rz-ripple rz-border-radius-3"
+                                onclick="@(() => AddToOrder(menuItem))">
+                                <RadzenRow Gap="0.5rem">
+                                    <RadzenColumn Size="8" Class="rz-text-truncate">
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Light" Text=@(type) Class="rz-mr-1"
+                                            IsPill="true" />
+                                    </RadzenColumn>
+                                    <RadzenColumn Size="4" Class="rz-text-align-right">
+                                        <RadzenBadge BadgeStyle="BadgeStyle.Secondary" Shade="Shade.Lighter"
+                                            Text=@($"{menuItem.Price} E") IsPill="true" />
+                                    </RadzenColumn>
+                                </RadzenRow>
+                                <hr style="border: none; background-color: rgba(0,0,0,.08); height: 1px; margin: 1rem 0;" />
+                                <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Gap="1rem">
+                                    <RadzenStack Gap="0">
+                                        <RadzenText TextStyle="TextStyle.Subtitle1" Class="rz-mb-0">
+                                            <strong>@(menuItem.Name)</strong>
+                                        </RadzenText>
+                                        <RadzenText TextStyle="TextStyle.Caption" Class="rz-mb-0">@(menuItem.Description)
+                                        </RadzenText>
+                                    </RadzenStack>
+                                </RadzenStack>
+                            </RadzenCard>
+                        </Template>
+                    </RadzenDataList>
+                </RadzenTabsItem>
+            }
+        </Tabs>
+    </RadzenTabs>
+
+</RadzenStack>
