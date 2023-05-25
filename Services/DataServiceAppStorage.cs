@@ -17,6 +17,11 @@ public class DataServiceAppStorage : IDataService
         return Task.CompletedTask;
     }
 
+    public Task AddOrder(Order order)
+    {
+        throw new NotImplementedException();
+    }
+
     public Task<MenuItem> GetMenuItem(string id)
     {
         return Task.FromResult<MenuItem>(_items.FirstOrDefault(item => item.Id == id));
@@ -27,11 +32,26 @@ public class DataServiceAppStorage : IDataService
         return Task.FromResult<IEnumerable<MenuItem>>(_items.AsEnumerable());
     }
 
+    public Task<Order> GetOrder(string id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<IEnumerable<Order>> GetOrders()
+    {
+        throw new NotImplementedException();
+    }
+
     public Task RemoveMenuItem(string id)
     {
         _items.RemoveAll(menuItem => menuItem.Id == id);
 
         return Task.CompletedTask;
+    }
+
+    public Task RemoveOrder(string id)
+    {
+        throw new NotImplementedException();
     }
 
     public Task UpdateMenuItem(MenuItem menuItem)
@@ -46,5 +66,10 @@ public class DataServiceAppStorage : IDataService
         item.Price = menuItem.Price;
 
         return Task.CompletedTask;
+    }
+
+    public Task UpdateOrder(Order order)
+    {
+        throw new NotImplementedException();
     }
 }

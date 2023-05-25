@@ -13,4 +13,14 @@ public interface IDataService
     public Task UpdateMenuItem(MenuItem menuItem);
 
     public Task RemoveMenuItem(string id);
+
+    public Task AddOrder(Order order);
+
+    public Task<Order> GetOrder(string id);
+
+    public Task<IEnumerable<Order>> GetOrders();
+
+    public Task UpdateOrder(Order order);
+
+    public Task RemoveOrder(string id);
 }

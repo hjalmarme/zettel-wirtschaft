@@ -33,4 +33,29 @@ public class DataServiceIndexedDb : IDataService
     {
         await _jsRuntime.InvokeVoidAsync("window.idbWrapper.delete", "menuItems", id);
     }
+
+    public async Task AddOrder(Order order)
+    {
+        await _jsRuntime.InvokeVoidAsync("window.idbWrapper.add", "orders", order);
+    }
+
+    public async Task<Order> GetOrder(string id)
+    {
+        return await _jsRuntime.InvokeAsync<Order>("window.idbWrapper.get", "orders", id);
+    }
+
+    public async Task<IEnumerable<Order>> GetOrders()
+    {
+        return await _jsRuntime.InvokeAsync<IEnumerable<Order>>("window.idbWrapper.getAll", "orders");
+    }
+
+    public async Task UpdateOrder(Order order)
+    {
+        await _jsRuntime.InvokeVoidAsync("window.idbWrapper.put", "orders", order);
+    }
+
+    public async Task RemoveOrder(string id)
+    {
+        await _jsRuntime.InvokeVoidAsync("window.idbWrapper.delete", "orders", id);
+    }
 }
