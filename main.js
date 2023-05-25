@@ -26,6 +26,7 @@ window.idbWrapper = (() => {
                 };
 
                 _db.createObjectStore('menuItems', { keyPath: 'id' });
+                _db.createObjectStore('orders', { keyPath: 'id' });
 
                 //const objectStore = _db.createObjectStore('menuItems', { keyPath: 'id' });
                 //objectStore.createIndex('type', 'type', { unique: false });
