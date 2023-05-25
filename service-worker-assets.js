@@ -33,7 +33,7 @@
       "url": "images\/logo.png"
     },
     {
-      "hash": "sha256-nrhENMikPhS3CybfFH4PSoqs48hwqA\/0izbMMLsNZFs=",
+      "hash": "sha256-VPugX6UytJwjlJ1wYlC78fvmaHf9k95Zos7MTpwLg5M=",
       "url": "index.html"
     },
     {
