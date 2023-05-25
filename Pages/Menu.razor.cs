@@ -88,4 +88,102 @@ public partial class Menu
             await dataGrid.Reload();
         }
     }
+
+    protected async Task AddDemoData()
+    {
+        var data = new List<Models.MenuItem>()
+        {
+            new Models.MenuItem()
+            {
+                Name = "Kola",
+                Description = "0,33",
+                Price = "3",
+                Type = "Drinks"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Orange",
+                Description = "0,33",
+                Price = "3",
+                Type = "Drinks"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Zitrone",
+                Description = "0,33",
+                Price = "3",
+                Type = "Drinks"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Jever",
+                Description = "0,33",
+                Price = "3",
+                Type = "Drinks"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Pulleken",
+                Description = "0,33",
+                Price = "3",
+                Type = "Drinks"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Aperol",
+                Description = "alk",
+                Price = "3",
+                Type = "Drinks"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Burger",
+                Description = "with cheese",
+                Price = "5",
+                Type = "Food"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Pizza",
+                Description = "vegan",
+                Price = "5",
+                Type = "Food"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Panini",
+                Description = "with rocktes",
+                Price = "5",
+                Type = "Food"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Banana Bread",
+                Description = "vegan",
+                Price = "5",
+                Type = "Food"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Pretzel",
+                Description = "with butter",
+                Price = "5",
+                Type = "Food"
+            },
+            new Models.MenuItem()
+            {
+                Name = "Nuts",
+                Description = "allergic",
+                Price = "5",
+                Type = "Food"
+            },
+        };
+
+        foreach (var i in data)
+        {
+            await DataService.AddMenuItem(i);
+        }
+
+        await dataGrid.Reload();
+    }
 }
