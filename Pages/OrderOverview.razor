@@ -1,0 +1,39 @@
+@page "/orderoverview"
+
+<PageTitle>Orders</PageTitle>
+
+<RadzenRow>
+    <RadzenColumn Size="12">
+        <RadzenText Text="Orders" TextStyle="TextStyle.H3" TagName="TagName.H1" />
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenRow>
+    <RadzenColumn Size="12">
+        <RadzenButton Text="Add Order" Click=@AddOrder></RadzenButton>
+        <RadzenButton Text="Edit Order" Click=@EditOrder></RadzenButton>
+        <RadzenButton Text="Remove Order" Click=@RemoveOrder></RadzenButton>
+        <RadzenButton Text="Close Order" Click=@CloseOrder></RadzenButton>
+    </RadzenColumn>
+</RadzenRow>
+
+<RadzenTabs TabPosition="TabPosition.Top" RenderMode="TabRenderMode.Client" class="rz-mt-2">
+    <Tabs>
+        <RadzenTabsItem Text="Open orders">
+            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Start" Gap="1rem">
+                @foreach (var order in Orders.Where(x => x.IsOpen).OrderByDescending(x => x.Date))
+                {
+                    <OrderComponent Order="order" IsSelected="@IsChildSelected(order)" OnClick="@(() => OnSelectOrder(order))"/>
+                }
+            </RadzenStack>
+        </RadzenTabsItem>
+        <RadzenTabsItem Text="Closed orders">
+            <RadzenStack Orientation="Orientation.Horizontal" JustifyContent="JustifyContent.Start" Gap="1rem">
+                @foreach (var order in Orders.Where(x => !x.IsOpen).OrderByDescending(x => x.Date))
+                {
+                    <OrderComponent Order="order" />
+                }
+            </RadzenStack>
+        </RadzenTabsItem>
+    </Tabs>
+</RadzenTabs>
