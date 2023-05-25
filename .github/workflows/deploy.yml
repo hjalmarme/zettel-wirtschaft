@@ -21,7 +21,7 @@ jobs:
         run: dotnet publish --configuration Release --output publish
         
       - name: Change base-tag in index.html from / to zettel-wirtschaft
-        run: sed -i 's/<base href="\/" \/>/<base href="\/zettel-wirtschaft\/" \/>/g' release/wwwroot/index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/zettel-wirtschaft\/" \/>/g' publish/wwwroot/index.html
 
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
