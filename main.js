@@ -166,3 +166,12 @@ window.idbWrapper = (() => {
 })();
 
 window.onload = () => window.idbWrapper.open();
+
+window.downloadFile = function (filename, content, contentType) {
+    const element = document.createElement('a');
+    element.href = URL.createObjectURL(new Blob([content], { type: contentType }));
+    element.download = filename;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
