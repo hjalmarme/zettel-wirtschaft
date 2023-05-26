@@ -69,12 +69,12 @@ public partial class Order
             await DataService.UpdateOrder(CurrentOrder);
         }
 
-        NavigationManager.NavigateTo("/orderoverview");
+        NavigationManager.NavigateTo(NavigationManager.BaseUri + "orderoverview");
     }
 
     protected void OnExit()
     {
-        NavigationManager.NavigateTo("/orderoverview");
+        NavigationManager.NavigateTo(NavigationManager.BaseUri + "orderoverview");
     }
 
     public void AddToOrder(Models.MenuItem item)

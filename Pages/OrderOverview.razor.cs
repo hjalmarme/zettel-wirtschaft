@@ -56,9 +56,9 @@ public partial class OrderOverview
         }
     }
 
-    protected void AddOrder() => NavigationManager.NavigateTo("/order");
+    protected void AddOrder() => NavigationManager.NavigateTo(NavigationManager.BaseUri + "order");
 
-    protected void EditOrder() => NavigationManager.NavigateTo($"/order/{SelectedOrder?.Id}");
+    protected void EditOrder() => NavigationManager.NavigateTo(NavigationManager.BaseUri + $"order/{SelectedOrder?.Id}");
 
     protected async Task RemoveOrder()
     {
