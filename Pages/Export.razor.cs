@@ -1,3 +1,4 @@
+using ClosedXML.Excel;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Radzen;
@@ -43,21 +44,41 @@ public partial class Export
         DateTime now = DateTime.Now;
 
         // file name
-        string fileName = $"DailyExport_{now.ToString("yyyy-MM-dd_HH-mm")}.csv";
+        string fileName = $"DailyExport_{now:yyyy-MM-dd_HH-mm}.xlsx";
+
+        // workbook / worksheet
+        using var workbook = new XLWorkbook();
+        var worksheet = workbook.Worksheets.Add("Sheet1");
 
         // header
-        string fileContent = "ID;Date;Name;Price;\n";
+        worksheet.Cell("A1").Value = "ID";
+        worksheet.Cell("B1").Value = "Date";
+        worksheet.Cell("C1").Value = "Name";
+        worksheet.Cell("D1").Value = "Price";
 
         // content
+        int row = 2;
         foreach (var order in orders.Where(x => x.Date.Date == now.Date))
         {
             foreach (var item in order.Items)
             {
-                fileContent += $"{order.Id};{order.Date.ToString("yyyy-MM-dd_HH-mm")};{item.Name};{item.Price};\n";
+                worksheet.Cell($"A{row}").Value = order.Id;
+                worksheet.Cell($"B{row}").Value = order.Date.ToString("yyyy-MM-dd_HH-mm");
+                worksheet.Cell($"C{row}").Value = item.Name;
+                worksheet.Cell($"D{row}").Value = item.Price;
+                row++;
             }
         }
 
-        // Call the JavaScript function to create and download the file
-        await JSRuntime.InvokeVoidAsync("downloadFile", fileName, fileContent, "text/plain");
+        // Convert workbook to a byte array
+        byte[] byteArray;
+        using (var memoryStream = new MemoryStream())
+        {
+            workbook.SaveAs(memoryStream);
+            byteArray = memoryStream.ToArray();
+        }
+
+        // download
+        await JSRuntime.InvokeVoidAsync("downloadFile", fileName, byteArray, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
     }
 }
