@@ -30,21 +30,56 @@ public partial class Export
     [Inject]
     protected IDataService DataService { get; set; }
 
+    protected record OrderItem
+    {
+        public string Id { get; set; }
+        public string Date { get; set; }
+        public string Name { get; set; }
+        public string Price { get; set; }
+    };
+
+    protected RadzenDataGrid<OrderItem> dataGrid;
+
+    protected List<OrderItem> orderItems = new();
+
     protected IEnumerable<Models.Order> orders;
+
+    protected DateTime date = DateTime.Now.Date;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
 
         orders = await DataService.GetOrders();
+
+        await FilterOrders();
     }
 
-    public async Task DailyExport()
+    protected async Task FilterOrders()
     {
-        DateTime now = DateTime.Now;
+        orderItems.Clear();
+        foreach (var order in orders.Where(x => x.Date.Date == date.Date))
+        {
+            foreach (var item in order.Items)
+            {
+                orderItems.Add(new OrderItem
+                {
+                    Id = order.Id,
+                    Date = order.Date.ToString("yyyy-MM-dd_HH-mm"),
+                    Name = item.Name,
+                    Price = item.Price
+                });
+            }
+        }
 
+        await dataGrid.Reload();
+    }
+
+    protected async Task ExportXlsx()
+    {
         // file name
-        string fileName = $"DailyExport_{now:yyyy-MM-dd_HH-mm}.xlsx";
+        string fileName = $"DailyExport_{date:yyyy-MM-dd}.xlsx";
+        string fileType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 
         // workbook / worksheet
         using var workbook = new XLWorkbook();
@@ -58,16 +93,13 @@ public partial class Export
 
         // content
         int row = 2;
-        foreach (var order in orders.Where(x => x.Date.Date == now.Date))
+        foreach (var item in orderItems)
         {
-            foreach (var item in order.Items)
-            {
-                worksheet.Cell($"A{row}").Value = order.Id;
-                worksheet.Cell($"B{row}").Value = order.Date.ToString("yyyy-MM-dd_HH-mm");
-                worksheet.Cell($"C{row}").Value = item.Name;
-                worksheet.Cell($"D{row}").Value = item.Price;
-                row++;
-            }
+            worksheet.Cell($"A{row}").Value = item.Id;
+            worksheet.Cell($"B{row}").Value = item.Date;
+            worksheet.Cell($"C{row}").Value = item.Name;
+            worksheet.Cell($"D{row}").Value = item.Price;
+            row++;
         }
 
         // Convert workbook to a byte array
@@ -79,6 +111,6 @@ public partial class Export
         }
 
         // download
-        await JSRuntime.InvokeVoidAsync("downloadFile", fileName, byteArray, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        await JSRuntime.InvokeVoidAsync("downloadFile", fileName, byteArray, fileType);
     }
 }

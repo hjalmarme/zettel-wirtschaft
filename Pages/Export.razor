@@ -10,6 +10,18 @@
 
 <RadzenRow>
     <RadzenColumn Size="12">
-        <RadzenButton Text="Daily Order Export" Click=@DailyExport></RadzenButton>
+        <RadzenButton Text="Export xlsx" Click=@ExportXlsx></RadzenButton>
+    </RadzenColumn>
+    <RadzenColumn Size="12">
+        <RadzenDatePicker @bind-Value=@date DateFormat="yyyy-MM-dd" Change="FilterOrders" />
     </RadzenColumn>
 </RadzenRow>
+
+<RadzenDataGrid @ref="dataGrid" Data="@orderItems" TItem="OrderItem" AllowPaging="true" AllowSorting="true" class="rz-mt-4">
+    <Columns>
+        <RadzenDataGridColumn TItem="OrderItem" Property="Id" Title="ID" />
+        <RadzenDataGridColumn TItem="OrderItem" Property="Date" Title="Date" />
+        <RadzenDataGridColumn TItem="OrderItem" Property="Name" Title="Name" />
+        <RadzenDataGridColumn TItem="OrderItem" Property="Price" Title="Price" />
+    </Columns>
+</RadzenDataGrid>
