@@ -66,7 +66,7 @@
       "System.Net.Primitives.dll": "sha256-w\/jRFhpRhZkR8OHpSgWF02HVhJhl9QVgT\/x+4sD4Xyc=",
       "System.Numerics.Vectors.dll": "sha256-0\/6MCorWcTTUbdQ\/NlfqBze2yzu+Z86JG5D00Or4gLw=",
       "System.ObjectModel.dll": "sha256-dX18ExpNUm+NTEjSQx2BLTW9Y7sI38Mks0t9okav2+0=",
-      "System.Private.CoreLib.dll": "sha256-VPymtYTbqLJ9OwafSXnSkttao11+zZ7+Yc\/0laHhD1o=",
+      "System.Private.CoreLib.dll": "sha256-X9CA1XgL23ngt34YCEPfwQGHnynCPch4dOJ+wmH3\/3A=",
       "System.Private.Uri.dll": "sha256-abTId8x3JVFTzu6E5p7o9nxwNxbcFMQ9TbkHFbVe6Jk=",
       "System.Private.Xml.dll": "sha256-bVbk8hLNmN2S3RUOcfQcV97\/sl4\/6gCKIqUSyabn3t4=",
       "System.Private.Xml.Linq.dll": "sha256-SMZe8ajYpIbvW3Oq3fY8GzkBnM9S7G1trzbpvh2O4Q0=",
@@ -96,7 +96,7 @@
       "System.Xml.Linq.dll": "sha256-A4CODzYb1u9XpUZmVzurgU7y8PBOj9tm7Ru5VFqAE8g=",
       "System.Xml.XDocument.dll": "sha256-QmRjScWn3TFZsTuifkzL4TrNUfJqJM68vPkFNsEAwjI=",
       "XLParser.dll": "sha256-oSEf5C5lssUfKDxliKKYmJ5QuYjMyCpQSpsqf0bFS5w=",
-      "ZettelWirtschaft.dll": "sha256-lZXDckSf8wmAJU7PcsXsOG\/3JdOkkj1+GucDl5XA5MA="
+      "ZettelWirtschaft.dll": "sha256-niUXUhTncE5PI22AOpSxBS0sQAP+FVJIIWMPVJ\/xNS0="
     },
     "extensions": null,
     "lazyAssembly": null,
