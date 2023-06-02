@@ -66,6 +66,8 @@ public partial class OrderOverview
 
         await DataService.RemoveOrder(SelectedOrder.Id);
 
+        Orders = await DataService.GetOrders();
+
         StateHasChanged();
     }
     protected async Task CloseOrder()
