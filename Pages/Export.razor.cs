@@ -40,6 +40,10 @@ public partial class Export
 
     protected DateTime date = DateTime.Now.Date;
 
+    protected bool showClosed = true;
+
+    protected bool showOpen = false;
+
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
@@ -51,8 +55,13 @@ public partial class Export
 
     protected async Task FilterOrders()
     {
+        var filteredOrders = orders.Where(x =>
+            x.Date.Date == date.Date &&
+            ((showClosed && !x.IsOpen) || (showOpen && x.IsOpen))
+        );
+
         orderItems.Clear();
-        foreach (var order in orders.Where(x => x.Date.Date == date.Date))
+        foreach (var order in filteredOrders)
         {
             foreach (var item in order.Items)
             {
