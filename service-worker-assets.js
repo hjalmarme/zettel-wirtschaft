@@ -77,7 +77,7 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-+y96RYo1XFGzhWwIx7jVhdjSVb3LF0mBTpKbv99HuLQ=",
+      "hash": "sha256-skK0tZMFwU3GONhfyRZD2EhiR2\/RssGZhD\/KmLHtS4I=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -317,7 +317,7 @@
       "url": "_framework\/System.ObjectModel.dll"
     },
     {
-      "hash": "sha256-X9CA1XgL23ngt34YCEPfwQGHnynCPch4dOJ+wmH3\/3A=",
+      "hash": "sha256-VPymtYTbqLJ9OwafSXnSkttao11+zZ7+Yc\/0laHhD1o=",
       "url": "_framework\/System.Private.CoreLib.dll"
     },
     {
@@ -437,7 +437,7 @@
       "url": "_framework\/XLParser.dll"
     },
     {
-      "hash": "sha256-niUXUhTncE5PI22AOpSxBS0sQAP+FVJIIWMPVJ\/xNS0=",
+      "hash": "sha256-ywX8z5uEBlsPdOKMyFqWmHBkY+ajUd4JAcr3xCg4P9s=",
       "url": "_framework\/ZettelWirtschaft.dll"
     },
     {
@@ -577,5 +577,5 @@
       "url": "_content\/Radzen.Blazor\/Radzen.Blazor.js"
     }
   ],
-  "version": "inXbLRW4"
+  "version": "P0f7eRfU"
 };
