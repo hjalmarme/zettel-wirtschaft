@@ -1,4 +1,5 @@
 @page "/export"
+@using System.Globalization;
 
 <PageTitle>Export</PageTitle>
 
@@ -17,11 +18,23 @@
     </RadzenColumn>
 </RadzenRow>
 
-<RadzenDataGrid @ref="dataGrid" Data="@orderItems" TItem="OrderItem" AllowPaging="true" AllowSorting="true" class="rz-mt-4">
+<RadzenDataGrid class="rz-mt-4" @ref="dataGrid"
+                Data="@orderItems"
+                TItem="(Models.Order order, Models.MenuItem item)"
+                AllowPaging="true"
+                AllowSorting="true">
     <Columns>
-        <RadzenDataGridColumn TItem="OrderItem" Property="Id" Title="ID" />
-        <RadzenDataGridColumn TItem="OrderItem" Property="Date" Title="Date" />
-        <RadzenDataGridColumn TItem="OrderItem" Property="Name" Title="Name" />
-        <RadzenDataGridColumn TItem="OrderItem" Property="Price" Title="Price" />
+        <RadzenDataGridColumn TItem="(Models.Order order, Models.MenuItem item)" Title="ID">
+            <Template Context="data">@(data.order.Id)</Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="(Models.Order order, Models.MenuItem item)" Property="order.Date" Title="Date">
+            <Template Context="data">@(data.order.Date.ToString(CultureInfo.CurrentCulture))</Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="(Models.Order order, Models.MenuItem item)" Property="item.Name" Title="Name">
+            <Template Context="data">@(data.item.Name)</Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="(Models.Order order, Models.MenuItem item)" Property="item.Price" Title="Price">
+            <Template Context="data">@(data.item.Price)</Template>
+        </RadzenDataGridColumn>
     </Columns>
 </RadzenDataGrid>

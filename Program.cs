@@ -9,6 +9,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddSingleton<IDataService, DataServiceIndexedDb>();
+builder.Services.AddSingleton<IExportService, ExportService>();
 
 builder.Services.AddScoped<DialogService>();
 builder.Services.AddScoped<NotificationService>();
